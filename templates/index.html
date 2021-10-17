@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title>Armstrong Number</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		body{
+			background: url({% static 'bg.jpg' %});
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+		.mainform button {
+			padding: 4px 15.1em;
+			font-weight: bold;
+		}
+
+		.bgcolor {
+			margin: 19em auto;
+			background: #0000008c;
+			padding: 1em 3em;
+			border: solid 8px #00000070;
+			border-radius: 10px;
+		}
+
+		.bgcolor .formhead{
+			text-align: center;
+			color: #fff;
+			padding: 1em 0;
+		}
+
+		.form-group small{
+			color: #e74c3c;
+			/*position: absolute;
+			bottom: 0;
+			left: 0;
+			visibility: hidden;*/
+		}
+
+		.form-group.error small{
+			visibility: visible;
+		}
+
+		#success{
+			color: green;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="mainform">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<form method="post" action="check">
+						{% csrf_token %}
+						<div class="row">
+							<div class="bgcolor">
+								<div class="formhead">
+									<h2>Check Your Armstrong Number</h2>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="number" id="armstrongnum" name="armstrong" placeholder="Enter Your Number" class="form-control">
+										<small id="error"></small>
+										<small id="success"></small>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<input type="submit" value="Submit" value="CHECK NUMBER" onclick="myFunction()" class="btn btn-primary">
+										<!-- <button class="btn btn-primary" onclick="myFunction()">Submit</button> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+
+function myFunction(){
+
+	let getval = document.getElementById("armstrongnum").value;
+	let getlength = getval.length;
+
+	if(getval == ''){
+		document.getElementById('error').innerHTML = "Please Enter Your Number";
+		document.getElementById('success').innerHTML = "";
+	}else if(getlength  == 3){
+		document.getElementById('success').innerHTML = "Fine";
+		document.getElementById('error').innerHTML = "";
+	}else{
+		document.getElementById('success').innerHTML = "";
+		document.getElementById('error').innerHTML = "Please Correct Number";
+	}
+
+
+}
+
+
+// const num = document.getElementById('armstrongnum');
+
+// form.addEvenetListener('submit', (event) =>{
+// 	event.preventDefault();
+// 	validate();
+// })
+
+// const validate = () =>{
+// 	const num = num.value.trim();
+
+// 	if (num === "") {
+// 		setErrormsg(num, 'Number Cannot be blank');
+// 	}else if(num.length <= 2){
+// 		setErrormsg(num, 'minimum Number is 3 required');
+// 	}else{
+// 		setSuccessMsg(num);
+// 	}
+// }
+
+// function setErrorMsg(input, errormsgs){
+// 	const formgroup = input.parentElement;
+// 	const small = formgroup.querySelector('small');
+// }
+
+// function myFunction(test) {
+// var test=document.getElementById("armstrongnum").value;
+// alert(test.length);
+
+
+
+// }
+
+</script>
